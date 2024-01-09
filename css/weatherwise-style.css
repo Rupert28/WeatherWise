@@ -1,0 +1,68 @@
+#weather-forecast {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #1f1f1f ;
+}
+
+
+.weatherwise-wrapper h2 {
+    padding: 15px 0px 0px 15px;
+    margin-bottom: 0px;
+}
+
+.weatherwise-wrapper {
+    background-color: rgb(244, 244, 244);
+    border-radius: 10px;
+}
+
+.weather-carousel {
+    display: flex;
+    overflow-x: auto;
+    margin: 10px;
+    padding: 15px;
+}
+
+.current-conditions {
+    background-color: lightgray;
+    padding: 10px;
+    border-radius:10px;
+    min-width: 160px;
+}
+
+.currentconditionswrapper {
+    margin: 10px 0 10px 10px;
+    padding: 15px;
+}
+
+.future-forecast {
+    flex: 0 0 auto;
+    margin-right: 30px;
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 160px;
+}
+
+/*Keeps the current forecast on top*/
+.weatherinfo {
+    display: flex;
+}
+
+.time {
+    font-size: 26px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.error-message {
+    background-color: #ffdddd;
+    padding: 15px;
+    border: 1px solid red;
+    border-radius: 10px;
+}
+
+h4 {
+    margin: 0 0 0 15px;
+}

@@ -1,0 +1,8 @@
+#Ignore logs
+*.log
+
+#Ignore temporary files
+*.tmp
+
+#Ignore config files with sensitive info
+config.ini
