@@ -52,10 +52,8 @@ function weatherwise_display_weather()
     } else {
         global $weather_icons;
         $settings = get_option('weatherwise_settings');
-        //test api key: 1745f6b02837f52e1cbc9d8defc3a2e4
+        
         $api_key = isset($settings['api_key']) ? $settings['api_key'] : '';
-        //$latitude = '-32.246380';
-        //$longitude = '148.591260';
         $latitude = isset($settings['latitude']) ? $settings['latitude'] : '';
         $longitude = isset($settings['longitude']) ? $settings['longitude'] : '';
         $api_url = "https://api.openweathermap.org/data/3.0/onecall?lat=$latitude&lon=$longitude&appid=$api_key&units=metric";
