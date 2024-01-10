@@ -1,68 +1,98 @@
-#weather-forecast {
-    font-family: 'Nunito Sans', sans-serif;
-    color: #1f1f1f ;
+
+:root {
+    --background-colour: rgb(244, 244, 244);
+    --text-colour: #1f1f1f;
 }
 
+
+#weather-forecast {
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--text-colour);
+}
 
 .weatherwise-wrapper h2 {
-    padding: 15px 0px 0px 15px;
-    margin-bottom: 0px;
+  padding: 15px 0px 0px 15px;
+  margin-bottom: 0px;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--text-colour);
 }
 
+.weatherwise-wrapper h4 {
+    padding-left: 15px;
+    margin: 0 !important;
+    font-family: "Nunito Sans", sans-serif;
+    color: var(--text-colour);
+  }
+
+
 .weatherwise-wrapper {
-    background-color: rgb(244, 244, 244);
-    border-radius: 10px;
+  background-color: var(--background-colour);
+  border-radius: 10px;
+  box-shadow:  5px 5px 15px #1f1f1f4c;
 }
 
 .weather-carousel {
-    display: flex;
-    overflow-x: auto;
-    margin: 10px;
-    padding: 15px;
+  display: flex;
+  overflow-x: auto;
+  margin: 10px;
+  padding: 15px;
 }
 
 .current-conditions {
-    background-color: lightgray;
-    padding: 10px;
-    border-radius:10px;
-    min-width: 160px;
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 165px;
+  box-shadow:  5px 5px 15px #1f1f1f4c;
+
 }
 
 .currentconditionswrapper {
-    margin: 10px 0 10px 10px;
-    padding: 15px;
+  margin: 10px 0 10px 10px;
+  padding: 15px;
 }
 
 .future-forecast {
-    flex: 0 0 auto;
-    margin-right: 30px;
-    background-color: lightgray;
-    padding: 10px;
-    border-radius: 10px;
-    min-width: 160px;
+  flex: 0 0 auto;
+  margin-right: 30px;
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 165px;
+  box-shadow:  5px 5px 15px #1f1f1f4c;
+
 }
 
 /*Keeps the current forecast on top*/
-.weatherinfo {
+@media only screen and (min-width: 450px) {
+  .weatherinfo {
     display: flex;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+    .current-conditions {
+    max-width: 100%;
+}
+.currentconditionswrapper {
+    margin-right: 15px;
+}
 }
 
 .time {
-    font-size: 26px;
+  font-size: 26px;
 }
 
 .image-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .error-message {
-    background-color: #ffdddd;
-    padding: 15px;
-    border: 1px solid red;
-    border-radius: 10px;
+  background-color: #ffdddd;
+  padding: 15px;
+  border: 1px solid red;
+  border-radius: 10px;
 }
 
-h4 {
-    margin: 0 0 0 15px;
-}
+

@@ -2,31 +2,64 @@
 /*
 Plugin Name: WeatherWise
 Description: Show an hourly forecast for the next 24 hours on your website.
+Plugin URI: https://github.com/Rupert28/WeatherWise
 Version: 1.0.0
 Author: Rupert Morgan
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+//Include the file for plugin admin settings
 include_once(plugin_dir_path(__FILE__) . 'settings.php');
+
+//include_once(plugin_dir_path(__FILE__) . '/css/dynamic-styles.php');
 
 function weatherwise_register_settings()
 {
     register_setting('weatherwise_settings', 'weatherwise_settings');
     add_option('weatherwise_settings');
+
+    //register_setting('customisation_options','customisation_options');
+    //add_option('customisation_options');
 }
 add_action('admin_init', 'weatherwise_register_settings');
+
 function weatherwise_init()
 {
     add_shortcode('display_weather', 'weatherwise_insert_weather_content');
 }
 add_action('init', 'weatherwise_init');
 
+
+
 function weatherwise_enqueue_scripts()
 {
     wp_enqueue_style('weatherwise-style', plugins_url('css/weatherwise-style.css', __FILE__));
     wp_enqueue_style('google-font', 'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&display=swap');
+
+
+    $customisation_options = get_option('weatherwise_settings');
+    $background_colour = isset($customisation_options['background_colour']) ? $customisation_options['background_colour'] : '';
+    $text_colour = isset($customisation_options['text_colour']) ? $customisation_options['text_colour'] : '';
+
+
+
+    $dynamic_css = ":root {";
+
+    if (!empty($background_colour)) {
+        $dynamic_css .= "--background-colour: $background_colour;";
+    }
+
+    if (!empty($text_colour)) {
+        $dynamic_css .= "--text-colour: $text_colour;";
+    }
+    $dynamic_css .= "}";
+    wp_add_inline_style('weatherwise-style', $dynamic_css);
+
 }
+
+
+
 add_action('wp_enqueue_scripts', 'weatherwise_enqueue_scripts');
 
 $weather_icons = [
@@ -52,7 +85,7 @@ function weatherwise_display_weather()
     } else {
         global $weather_icons;
         $settings = get_option('weatherwise_settings');
-        
+
         $api_key = isset($settings['api_key']) ? $settings['api_key'] : '';
         $latitude = isset($settings['latitude']) ? $settings['latitude'] : '';
         $longitude = isset($settings['longitude']) ? $settings['longitude'] : '';
@@ -100,7 +133,7 @@ function display_weather_data($weather_data)
     $output .= '<div class="weatherwise-wrapper">';
     $output .= '<h2>24 Hour Forecast</h2>';
     $output .= "<h4>$display_location</h4>";
-    
+
     $output .= '<div class="weatherinfo">';
 
     $output .= '<div class="currentconditionswrapper">';
