@@ -48,6 +48,8 @@ function weatherwise_settings_page()
         <p>Thanks for installing the WeatherWise WordPress Plugin!<br>To use the plugin, add the shortcode
             <b><code>[display_weather]</code></b>
             to your site and configure the options below.
+            <br>
+            Note: if there are any configuration errors, you don't have to worry about ugly error messages, the widget will be hidden from non-admin users.
         </p>
         <form method="post" action="options.php">
             <?php
@@ -106,7 +108,7 @@ function weatherwise_settings_page()
                     <td>
                         <input type="text" name="weatherwise_settings[display_location]"
                             value="<?php echo $sanitized_settings['display_location']; ?>" />
-                        <p class="description">Enter the location you would like to display on the widget.</p>
+                        <p class="description">Enter the location you would like to display on the widget. This doesn't change the weather location, it's just for aesthetics.</p>
                     </td>
                 </tr>
                 <tr>
@@ -114,7 +116,7 @@ function weatherwise_settings_page()
                     <td>
                         <input type="text" name="weatherwise_settings[background_colour]"
                             value="<?php echo $sanitized_settings['background_colour']; ?>" class="color-picker" data-default-color="#ffffff" />
-                        <p class="description">Use hex including the # symbol.</p>
+                        <p class="description">Main background colour of the whole widget.</p>
                     </td>
                 </tr>
                 <tr>
@@ -122,14 +124,14 @@ function weatherwise_settings_page()
                     <td>
                         <input type="text" name="weatherwise_settings[forecast_background_colour]"
                             value="<?php echo $sanitized_settings['forecast_background_colour']; ?>" class="color-picker" data-default-color="#ffffff" />
-                        <p class="description">Use hex including the # symbol.</p>
+                        <p class="description">Background colour of the little forecast cards.</p>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">Text Colour</th>
                     <td>
                         <input type="text" name="weatherwise_settings[text_colour]" value="<?php echo $sanitized_settings['text_colour']; ?>" class="color-picker" data-default-color="#ffffff" />
-                        <p class="description">Use hex including the # symbol.</p>
+                        <p class="description">Text colour.</p>
                     </td>
                 </tr>
             </table>

@@ -31,6 +31,14 @@ function weatherwise_init()
 add_action('init', 'weatherwise_init');
 
 
+//Adds the settings link in the plugins list page
+function weatherwise_add_settings_link( $links ) {
+    $settings_link = '<a href="admin.php?page=weatherwise-settings">Settings</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'weatherwise_add_settings_link');
+
 
 function weatherwise_enqueue_scripts()
 {
