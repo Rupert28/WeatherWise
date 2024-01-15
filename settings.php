@@ -24,6 +24,13 @@ function get_svg_icon_content()
     return $svg_content;
 }
 
+function enqueue_colour_picker() {
+    wp_enqueue_style('wp-color-picker');
+    wp_enqueue_script('wp-color-picker');
+
+    wp_enqueue_script('script.js', plugin_dir_url(__FILE__) . 'script.js', array('wp-color-picker'), false, true);
+}
+add_action('admin_enqueue_scripts','enqueue_colour_picker');
 
 // Function to display the settings page
 function weatherwise_settings_page()
@@ -106,7 +113,7 @@ function weatherwise_settings_page()
                     <th scope="row">Background Colour</th>
                     <td>
                         <input type="text" name="weatherwise_settings[background_colour]"
-                            value="<?php echo $sanitized_settings['background_colour']; ?>" />
+                            value="<?php echo $sanitized_settings['background_colour']; ?>" class="color-picker" data-default-color="#ffffff" />
                         <p class="description">Use hex including the # symbol.</p>
                     </td>
                 </tr>
@@ -114,14 +121,14 @@ function weatherwise_settings_page()
                     <th scope="row">Forecast Background Colour</th>
                     <td>
                         <input type="text" name="weatherwise_settings[forecast_background_colour]"
-                            value="<?php echo $sanitized_settings['forecast_background_colour']; ?>" />
+                            value="<?php echo $sanitized_settings['forecast_background_colour']; ?>" class="color-picker" data-default-color="#ffffff" />
                         <p class="description">Use hex including the # symbol.</p>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row">Text Colour</th>
                     <td>
-                        <input type="text" name="weatherwise_settings[text_colour]" value="<?php echo $sanitized_settings['text_colour']; ?>" />
+                        <input type="text" name="weatherwise_settings[text_colour]" value="<?php echo $sanitized_settings['text_colour']; ?>" class="color-picker" data-default-color="#ffffff" />
                         <p class="description">Use hex including the # symbol.</p>
                     </td>
                 </tr>
