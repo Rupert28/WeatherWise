@@ -2,6 +2,7 @@
 :root {
     --background-colour: rgb(244, 244, 244);
     --text-colour: #1f1f1f;
+    --forecast-background-colour: #f0f0f1;
 }
 
 
@@ -28,7 +29,7 @@
 .weatherwise-wrapper {
   background-color: var(--background-colour);
   border-radius: 10px;
-  box-shadow:  5px 5px 15px #1f1f1f4c;
+  box-shadow:  10px 10px 10px #1f1f1f4c;
 }
 
 .weather-carousel {
@@ -39,11 +40,11 @@
 }
 
 .current-conditions {
-  background-color: lightgray;
+  background-color: var(--forecast-background-colour);
   padding: 10px;
   border-radius: 10px;
   min-width: 165px;
-  box-shadow:  5px 5px 15px #1f1f1f4c;
+  box-shadow:  10px 10px 10px #1f1f1f4c;
 
 }
 
@@ -55,11 +56,11 @@
 .future-forecast {
   flex: 0 0 auto;
   margin-right: 30px;
-  background-color: lightgray;
+  background-color: var(--forecast-background-colour);
   padding: 10px;
   border-radius: 10px;
   min-width: 165px;
-  box-shadow:  5px 5px 15px #1f1f1f4c;
+  box-shadow:  10px 10px 10px #1f1f1f4c;
 
 }
 

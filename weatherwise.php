@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 //Include the file for plugin admin settings
 include_once(plugin_dir_path(__FILE__) . 'settings.php');
 
-//include_once(plugin_dir_path(__FILE__) . '/css/dynamic-styles.php');
+//include_once(plugin_dir_path(__FILE__) . '/css/dynamic-stySles.php');
 
 function weatherwise_register_settings()
 {
@@ -38,9 +38,12 @@ function weatherwise_enqueue_scripts()
     wp_enqueue_style('google-font', 'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&display=swap');
 
 
+    //Dynamic CSS styling from admin options menu
+
     $customisation_options = get_option('weatherwise_settings');
     $background_colour = isset($customisation_options['background_colour']) ? $customisation_options['background_colour'] : '';
     $text_colour = isset($customisation_options['text_colour']) ? $customisation_options['text_colour'] : '';
+    $forecast_background_colour = isset($customisation_options['forecast_background_colour']) ? $customisation_options['forecast_background_colour'] : '';
 
 
 
@@ -53,6 +56,11 @@ function weatherwise_enqueue_scripts()
     if (!empty($text_colour)) {
         $dynamic_css .= "--text-colour: $text_colour;";
     }
+
+    if (!empty($forecast_background_colour)) {
+        $dynamic_css .= "--forecast-background-colour: $forecast_background_colour;";
+    }
+
     $dynamic_css .= "}";
     wp_add_inline_style('weatherwise-style', $dynamic_css);
 
@@ -100,7 +108,7 @@ function weatherwise_display_weather()
             $weather_data = json_decode($body);
 
             if ($weather_data && isset($weather_data->hourly)) {
-                set_transient('weather_data', $weather_data, 1); // Caching for 10 minutes at 600
+                set_transient('weather_data', $weather_data, 600); // Caching for 10 minutes at 600
 
                 $output .= display_weather_data($weather_data);
             } else {

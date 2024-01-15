@@ -61,7 +61,8 @@ function weatherwise_settings_page()
                 'api_key',
                 'display_location',
                 'background_colour',
-                'text_colour'
+                'text_colour',
+                'forecast_background_colour',
             );
 
             $sanitized_settings = array();
@@ -106,6 +107,14 @@ function weatherwise_settings_page()
                     <td>
                         <input type="text" name="weatherwise_settings[background_colour]"
                             value="<?php echo $sanitized_settings['background_colour']; ?>" />
+                        <p class="description">Use hex including the # symbol.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Forecast Background Colour</th>
+                    <td>
+                        <input type="text" name="weatherwise_settings[forecast_background_colour]"
+                            value="<?php echo $sanitized_settings['forecast_background_colour']; ?>" />
                         <p class="description">Use hex including the # symbol.</p>
                     </td>
                 </tr>
