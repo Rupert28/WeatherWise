@@ -6,3 +6,6 @@
 
 #Ignore config files with sensitive info
 config.ini
+
+#Ignore wordpress readme file
+readme.txt
